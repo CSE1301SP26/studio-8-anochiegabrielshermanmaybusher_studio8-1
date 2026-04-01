@@ -11,9 +11,19 @@ public class SelectAllQuestion extends MultipleChoiceQuestion {
 	 * @param answer
 	 * @param choices
 	 */
+
+	
+	private String[] choices;
+	private String answer;
+
 	public SelectAllQuestion(String prompt, String answer, String[] choices) {
 		// Hint: 1 point per choice
-		throw new NotYetImplementedException();
+		super(prompt, answer, choices.length, choices);
+		
+		
+
+	
+
 	}
 	
 	/**
@@ -21,7 +31,8 @@ public class SelectAllQuestion extends MultipleChoiceQuestion {
 	 * @param String givenAnswer to check for points
 	 */
 	public int checkAnswer(String givenAnswer) {
-		throw new NotYetImplementedException();
+		int lostPoints = findMissingCorrectAnswers(givenAnswer) + findIncorrectGivenAnswers(givenAnswer);
+		return getPoints() - lostPoints;
 	}
 
 	/**
